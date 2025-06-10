@@ -1,0 +1,230 @@
+
+/* Optimized Arabic Font Loading with font-display:swap */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+ 
+    --radius: 0.5rem;
+    
+    /* Product-specific color variables */
+    --wakel-primary: 214 100% 50%;
+    --wakel-secondary: 214 100% 95%;
+    --wakel-accent: 214 100% 85%;
+    --wakel-foreground: 214 100% 20%;
+    
+    --moder-primary: 24 100% 50%;
+    --moder-secondary: 24 100% 95%;
+    --moder-accent: 24 100% 85%;
+    --moder-foreground: 24 100% 20%;
+  }
+  
+  /* Product-specific utility classes */
+  .gradient-wakel {
+    background: linear-gradient(135deg, hsl(var(--wakel-secondary)) 0%, white 100%);
+  }
+  
+  .gradient-moder {
+    background: linear-gradient(135deg, hsl(var(--moder-secondary)) 0%, white 100%);
+  }
+  
+  .gradient-text-wakel {
+    background: linear-gradient(135deg, hsl(var(--wakel-primary)) 0%, hsl(var(--wakel-foreground)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .gradient-text-moder {
+    background: linear-gradient(135deg, hsl(var(--moder-primary)) 0%, hsl(var(--moder-foreground)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .wakel-primary {
+    color: hsl(var(--wakel-primary));
+  }
+  
+  .wakel-bg {
+    background-color: hsl(var(--wakel-primary));
+  }
+  
+  .wakel-border {
+    border-color: hsl(var(--wakel-primary));
+  }
+  
+  .moder-primary {
+    color: hsl(var(--moder-primary));
+  }
+  
+  .moder-bg {
+    background-color: hsl(var(--moder-primary));
+  }
+  
+  .moder-border {
+    border-color: hsl(var(--moder-primary));
+  }
+ 
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+ 
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+ 
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+ 
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+ 
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+ 
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+ 
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+ 
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+ 
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+
+  /* Colors for wakel and moder */
+  :root {
+    --wakel-light: #5096ff;
+    --wakel-main: #2563eb;
+    --wakel-dark: #1d4ed8;
+    --wakel-darker: #1e40af;
+    
+    --moder-light: #9e77ed;
+    --moder-main: #7c3aed;
+    --moder-dark: #6d28d9;
+    --moder-darker: #5b21b6;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Cairo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-display: swap;
+  }
+  
+  /* Critical CSS for above-the-fold content */
+  .critical-content {
+    font-display: swap;
+    will-change: transform;
+    contain: layout style paint;
+  }
+  
+  /* Optimized Arabic text rendering */
+  .arabic-optimized {
+    font-feature-settings: 'liga' 1, 'calt' 1, 'kern' 1;
+    text-rendering: optimizeLegibility;
+    font-display: swap;
+    direction: rtl;
+    text-align: right;
+  }
+  
+  /* Performance optimizations */
+  img, video {
+    content-visibility: auto;
+    contain-intrinsic-size: 300px 200px;
+  }
+  
+  /* Reduce layout shift */
+  .layout-stable {
+    aspect-ratio: attr(width) / attr(height);
+    object-fit: cover;
+  }
+}
+
+/* Animation classes */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-scroll {
+  animation: scroll 30s linear infinite;
+}
+
+.animation-delay-500 {
+  animation-delay: 500ms;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Fix for Arabic characters that extend below the baseline */
+.arabic-text-fix {
+  line-height: 1.6;
+  padding-bottom: 0.25rem;
+}
+
+/* Make sure there's no blank space under the footer */
+footer {
+  margin-bottom: 0;
+}
+
+main {
+  min-height: 60vh;
+}
