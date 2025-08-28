@@ -24,6 +24,7 @@ const TriviatStyleRegister = lazy(() => import("./pages/TriviatStyleRegister"));
 const TrialDashboard = lazy(() => import("./pages/TrialDashboard"));
 const ProductPage = lazy(() => import("./pages/ProductPage"));
 const DashboardRedirect = lazy(() => import("./pages/DashboardRedirect"));
+const FAQ = lazy(() => import("./pages/FAQ"));
 
 // Legal Pages
 const TermsOfService = lazy(() => import("./pages/TermsOfService"));
@@ -110,6 +111,13 @@ function App() {
               <Route path="/contact" element={
                 <Suspense fallback={<LoadingSpinner />}>
                   <Contact />
+                </Suspense>
+              } />
+              
+              {/* FAQ */}
+              <Route path="/faq" element={
+                <Suspense fallback={<LoadingSpinner />}>
+                  <FAQ />
                 </Suspense>
               } />
               
