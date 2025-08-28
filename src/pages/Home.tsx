@@ -93,6 +93,16 @@ const Home: React.FC = () => {
           ...registrationData,
           timestamp: new Date()
         });
+        
+        // Send WhatsApp notifications
+        await registrationService.sendWhatsAppNotification({
+          ...registrationData,
+          timestamp: new Date()
+        });
+        await registrationService.sendAdminWhatsAppNotification({
+          ...registrationData,
+          timestamp: new Date()
+        });
       }
     } catch (error) {
       console.error('Registration error:', error);

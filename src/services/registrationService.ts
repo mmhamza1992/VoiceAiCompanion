@@ -1,3 +1,6 @@
+import emailService from './emailService';
+import whatsappService from './whatsappService';
+
 interface RegistrationData {
   name: string;
   email: string;
@@ -67,26 +70,17 @@ export class RegistrationService {
 
   async sendEmailNotification(data: RegistrationData): Promise<boolean> {
     try {
-      // In a real implementation, you would send an email notification
-      // This could be done through your backend API or a service like SendGrid
-      
-      const emailData = {
-        to: data.email,
-        subject: 'تم استلام طلبك بنجاح',
-        template: 'registration-confirmation',
-        data: {
-          name: data.name,
-          carId: data.selectedCarId,
-          hasInitiative: data.hasInitiative,
-          budget: data.budget
-        }
-      };
+      // Use the email service to send actual emails
+      const emailSent = await emailService.sendRegistrationEmail({
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        hasInitiative: data.hasInitiative,
+        selectedCar: data.selectedCarId,
+        budget: data.budget
+      });
 
-      // Simulate email sending
-      console.log('Sending email notification:', emailData);
-      await new Promise(resolve => setTimeout(resolve, 500));
-
-      return true;
+      return emailSent;
     } catch (error) {
       console.error('Error sending email notification:', error);
       return false;
@@ -95,27 +89,57 @@ export class RegistrationService {
 
   async sendAdminNotification(data: RegistrationData): Promise<boolean> {
     try {
-      // Send notification to admin about new registration
-      const adminNotification = {
-        type: 'new_registration',
-        data: {
-          name: data.name,
-          email: data.email,
-          phone: data.phone,
-          hasInitiative: data.hasInitiative,
-          selectedCarId: data.selectedCarId,
-          budget: data.budget,
-          timestamp: data.timestamp
-        }
-      };
+      // Send email notification to admin
+      const adminEmailSent = await emailService.sendAdminNotification({
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        hasInitiative: data.hasInitiative,
+        selectedCarId: data.selectedCarId,
+        budget: data.budget,
+        timestamp: data.timestamp
+      });
 
-      // In a real implementation, this would be sent to your admin dashboard
-      // or notification system
-      console.log('Sending admin notification:', adminNotification);
-      
-      return true;
+      return adminEmailSent;
     } catch (error) {
       console.error('Error sending admin notification:', error);
+      return false;
+    }
+  }
+
+  async sendWhatsAppNotification(data: RegistrationData): Promise<boolean> {
+    try {
+      // Send WhatsApp notification to user
+      const whatsappSent = await whatsappService.sendRegistrationNotification({
+        name: data.name,
+        phone: data.phone,
+        hasInitiative: data.hasInitiative,
+        selectedCar: data.selectedCarId
+      });
+
+      return whatsappSent;
+    } catch (error) {
+      console.error('Error sending WhatsApp notification:', error);
+      return false;
+    }
+  }
+
+  async sendAdminWhatsAppNotification(data: RegistrationData): Promise<boolean> {
+    try {
+      // Send WhatsApp notification to admin
+      const adminWhatsappSent = await whatsappService.sendAdminWhatsAppNotification({
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        hasInitiative: data.hasInitiative,
+        selectedCarId: data.selectedCarId,
+        budget: data.budget,
+        timestamp: data.timestamp
+      });
+
+      return adminWhatsappSent;
+    } catch (error) {
+      console.error('Error sending admin WhatsApp notification:', error);
       return false;
     }
   }
