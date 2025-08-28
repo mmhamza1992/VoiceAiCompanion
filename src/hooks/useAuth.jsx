@@ -2,6 +2,10 @@ import { createContext, useContext, useState, useEffect } from 'react';
 
 const AuthContext = createContext();
 
+// Google OAuth configuration
+const GOOGLE_CLIENT_ID = '****************'; // You'll need to provide the actual client ID
+const GOOGLE_CLIENT_SECRET = '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';
+
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
@@ -25,8 +29,22 @@ export const AuthProvider = ({ children }) => {
 
   const signInWithGoogle = async () => {
     try {
-      // Mock Google Sign-In for now
-      // In a real implementation, you would integrate with Google OAuth
+      // For now, using a mock implementation
+      // In production, you would use Google OAuth 2.0
+      
+      // Example implementation with Google OAuth:
+      /*
+      const googleAuthUrl = `https://accounts.google.com/o/oauth2/v2/auth?` +
+        `client_id=${GOOGLE_CLIENT_ID}&` +
+        `redirect_uri=${encodeURIComponent(window.location.origin + '/auth/callback')}&` +
+        `response_type=code&` +
+        `scope=openid email profile&` +
+        `access_type=offline`;
+      
+      window.location.href = googleAuthUrl;
+      */
+      
+      // Mock implementation for now
       const mockUser = {
         id: 'google_' + Date.now(),
         name: 'مستخدم Google',
