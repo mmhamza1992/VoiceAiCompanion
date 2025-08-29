@@ -13,19 +13,14 @@ const Navigation: React.FC = () => {
 
   const navItems = [
     { 
-      path: '/wakel', 
-      labelEn: 'Wakel AI', 
-      labelAr: 'وكيل الذكي' 
+      path: '/', 
+      labelEn: 'Home', 
+      labelAr: 'الرئيسية' 
     },
     { 
-      path: '/moder', 
-      labelEn: 'Moder Monitor', 
-      labelAr: 'مودير المراقب' 
-    },
-    { 
-      path: '/pricing', 
-      labelEn: 'Pricing', 
-      labelAr: 'الأسعار' 
+      path: '/faq', 
+      labelEn: 'FAQ', 
+      labelAr: 'الأسئلة الشائعة' 
     },
     { 
       path: '/contact', 
