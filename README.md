@@ -1,57 +1,36 @@
-# VoiceAiCompanion - Enterprise Wakel Platform
+# Car Import Service - استيراد السيارات
 
-## Production-Ready Wakel Voice AI Platform
+A modern car import website that connects customers with trusted importers in Egypt.
 
-Complete enterprise-grade application with authentic pricing structure and professional Arabic RTL support.
+## Features
 
-### Wakel Services & Pricing
+- 🚗 **Car Listings** - Browse imported cars with local and initiative pricing
+- 📝 **Registration System** - Easy registration with Google Sign-In or email/phone
+- 💬 **Chatbot Integration** - 24/7 customer support with Chatbase
+- 📧 **Email Notifications** - Automatic email confirmations
+- 📱 **WhatsApp Integration** - Instant messaging support
+- 🌐 **Arabic RTL Support** - Full Arabic language support
 
-**AI Call Handling**
-- Starter Plan: $297/month (1,000 minutes)
-- Professional Plan: $597/month (3,000 minutes) ⭐ Popular
-- Enterprise Plan: $1,197/month (10,000 minutes)
+## Technology Stack
 
-**Moder Performance Monitor**
-- Basic Monitor: $197/month (1,000 monitored minutes)
-- Professional Monitor: $397/month (3,000 monitored minutes) ⭐ Popular
-- Enterprise Monitor: $797/month (10,000 monitored minutes)
+- **Frontend**: React + TypeScript + Vite
+- **Styling**: Tailwind CSS
+- **UI Components**: Shadcn/ui
+- **Chatbot**: Chatbase
+- **Email**: SMTP (Titan Email)
+- **WhatsApp**: Twilio
 
-### Services Available
-- **Inbound Calls** (`/wakel-inbound`) - AI-powered inbound call handling
-- **Outbound Calls** (`/wakel-outbound`) - Automated outbound calling system
-- **WhatsApp** (`/whatsapp`) - WhatsApp Business API integration
-- **Performance Monitoring** (`/moder`) - Real-time call center analytics
+## Live Demo
 
-### Enterprise Features
-- Complete Arabic RTL language support
-- Professional UI with responsive design
-- Triviat-style registration and trial flow
-- Advanced demo booking with calendar integration
-- Production-optimized build (543KB main bundle)
-- PostgreSQL database with automated migrations
+Visit the live website to see all features in action!
 
-### Quick Start
+## Setup
+
 ```bash
 npm install
-npm run build
-npm start
+npm run dev
 ```
 
-### Environment Variables
-```
-DATABASE_URL=your_postgresql_url
-SUPABASE_URL=your_supabase_url
-SUPABASE_ANON_KEY=your_supabase_key
-SESSION_SECRET=your_session_secret
-```
+## Contact
 
-### Architecture
-- React 18 with TypeScript
-- Tailwind CSS for styling
-- Express.js backend
-- PostgreSQL database
-- Vite build optimization
-- Production server on port 3000
-
-### Production Deployment
-Application is ready for deployment with optimized build, database schema, and professional UI components.
+For support or inquiries, contact us at m@wakel.io
